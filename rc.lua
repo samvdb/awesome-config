@@ -106,10 +106,11 @@ layouts =
 -- }}}
 
 -- {{{ Wallpaper
-if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-    end
+local f = io.popen("sh -c \"find ~/.config/awesome/wallpaper -name '*.*' | shuf -n 1 | xargs echo -n\"")
+local wallpaper = f:read("*all")
+f:close()
+for s = 1, screen.count() do
+  gears.wallpaper.maximized(wallpaper, s, true)
 end
 -- }}}
 
