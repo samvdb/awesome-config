@@ -7,11 +7,13 @@ vicious.register( volumewidget, vicious.widgets.volume,
 	function (widgets, args)
 		if args[1] == 0 or args[2] == "♩" then
 			volicon:set_image(beautiful.widget_mute)
+			return "<span color=\"#7788af\">0%</span>"
 		else 
 			volicon:set_image(beautiful.widget_vol)
+			return "<span color=\"#7788af\">" .. args[1] .. "%</span>"
 		end
-		return "<span color=\"#7788af\">" .. args[1] .. "%</span>"
-	end, 2, "Master" )
+		
+	end, 1, "Master" )
 
 volumewidget:buttons(awful.util.table.join(
     awful.button({ }, 1, function () awful.util.spawn("amixer -q sset Master toggle", false) end),
