@@ -54,6 +54,9 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
+    -- Take A Screenshot
+    awful.key({ }, "Print", function () awful.util.spawn( "sh " .. scripts .. "/scrot", false ) end),
+
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
