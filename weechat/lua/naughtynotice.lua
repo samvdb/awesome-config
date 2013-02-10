@@ -52,9 +52,9 @@ function toggle_hotlist()
             weechat.infolist_free(hotlist)
         end
         if #active == 0 then
-            os.execute("echo 'tools.irc.clear()' | awesome-client")
+            os.execute("echo 'irc.clear()' | awesome-client")
         else
-            os.execute(string.format("echo 'tools.irc.activity(%q)' | awesome-client", table.concat(active, " ")))
+            os.execute(string.format("echo 'irc.activity(%q)' | awesome-client", table.concat(active, " ")))
         end
     end
 end
@@ -103,7 +103,7 @@ function receive(data, sig, message)
             if pass then
                 -- escape quotes in the message
                 message = message:gsub("['&<>\"]", { ["'"] = "&apos;", ["\""] = "&quot;", ["<"] = "&lt;", [">"] = "&gt;", ["&"] = "&amp;" })
-                os.execute(string.format("echo 'tools.irc.notify(%q, %q)' | awesome-client", server, message))
+                os.execute(string.format("echo 'irc.notify(%q, %q)' | awesome-client", server, message))
             end
         end
     end
