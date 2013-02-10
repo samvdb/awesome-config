@@ -10,7 +10,7 @@ vicious.register( volumewidget, vicious.widgets.volume,
 		else 
 			volicon:set_image(beautiful.widget_vol)
 		end
-		return "<span color=\"#7788af\">$1%</span>"
+		return "<span color=\"#7788af\">" .. args[1] .. "%</span>"
 	end, 2, "Master" )
 
 volumewidget:buttons(awful.util.table.join(
