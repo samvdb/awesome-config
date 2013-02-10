@@ -8,7 +8,7 @@
 neticon = wibox.widget.imagebox()
 neticon:set_image(beautiful.widget_net_wired)
 
-vicious.register(neticon, vicious.widgets.net, "", 2, "eth0");
+-- vicious.register(neticon, vicious.widgets.net, "", 2, "eth0");
 
 neticon:buttons(awful.util.table.join(
     awful.button({ }, 1, function () awful.util.spawn("wicd-client", false) end)
