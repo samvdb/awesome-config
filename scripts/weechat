@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $(pidof weechat-curses) ]; then
+    tmux attach -t Chat
+else
+    tmux new -s Chat weechat-curses
+fi

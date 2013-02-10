@@ -1,0 +1,49 @@
+#!/bin/bash
+# BSDL Miro Hrončok <miro@hroncok.cz>
+# subrnm .avi .srt (or vice versa)
+ 
+if [ $# -ne 2 ]; then
+        #echo "USAGE: subrnm .avi .srt (or vice versa)"
+        zenity --error --text "You have not chosen two files"
+        exit 1
+fi
+ 
+# Which is which
+filename=$(basename "$1")
+extension=${filename##*.}
+ 
+# Video first
+if [ "$extension" == "avi" ] || [ "$extension" == "mp4" ] || [ "$extension" == "crdownload" ]; then
+        #echo "First file is a video"
+        subtitles=$(basename "$2")
+        extension=${subtitles##*.}
+        if [ "$extension" != "srt" ] && [ "$extension" != "sub" ]; then
+                #echo "First file is a video. Second file are not subtitles"
+                zenity --error --text "First file is a video, but second file are not subtitles"
+                exit 1
+        fi
+        filename=${filename%.*}
+        dir=$(dirname "$1")
+        mv "$2" "$dir/$filename.$extension"
+        exit 0
+fi
+ 
+# Subtitles first
+if [ "$extension" == "srt" ] || [ "$extension" == "sub" ]; then
+        #echo "First file are subtitles"
+        video=$(basename "$2")
+        videext=${video##*.}
+        if [ "$videext" != "avi" ] && [ "$videext" != "mp4" ] && [ "$videext" != "crdownload" ]; then
+                #echo "First file are subtitles. Second file in not a video"
+                zenity --error --text "First file are subtitles, but second file in not a video"
+                exit 1
+        fi
+        video=${video%.*}
+        dir=$(dirname "$2")
+        mv "$1" "$dir/$video.$extension"
+        exit 0
+fi
+ 
+#echo "USAGE: subrnm .avi .srt (or vice versa)"
+zenity --error --text "First file is neither a video or subtitles"
+exit 1

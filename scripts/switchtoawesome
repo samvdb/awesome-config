@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "#!/bin/sh
+
+sudo sh /home/luca/.scripts/powerdown &
+nitrogen --restore &
+exec awesome" > /home/luca/.xinitrc
+sudo killall kactivitymanagerd
+sudo killall udisks-daemon
+sudo killall console-kit-daemon
+sudo killall startkde

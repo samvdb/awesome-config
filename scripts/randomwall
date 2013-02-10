@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while true;
+do
+  awsetbg -r /media/Data/Dropbox/Photos/Wallpapers
+  sleep 5m
+done &

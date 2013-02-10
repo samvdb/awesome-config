@@ -1,0 +1,22 @@
+#!/bin/bash
+numberoflines=5
+address="https://www.facebook.com/feeds/notifications.php?id=100001782637196&viewer=100001782637196&key=AWgCswzM89YZ96hj&format=rss20"
+wget --user-agent="Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.55 Safari/533.4" -q $address -O /tmp/fbrss
+cat /tmp/fbrss | awk '{
+ gsub(/.*<description>|<\/description>.*/,"")
+ print }' | grep "<title>" | cut -d"<" -f2 | cut -d">" -f2 | awk '{
+ gsub(/&apos;s/, ""); 
+ gsub(/&quot;/, "\"");
+ gsub(/commented on/, ">");
+ gsub(/also/, "");
+ gsub(/your friend request/, "friendship");
+ gsub(/posted something on/, "-->");
+ gsub(/posted on/, "-->");
+ print }' | awk '{
+ if ($0 in stored_lines)
+    x=1
+ else
+    print 
+    stored_lines[$0]=1
+ }'| tail -n +2 | head -n $numberoflines
+rm -f /tmp/fbrss*

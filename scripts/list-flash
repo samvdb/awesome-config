@@ -1,0 +1,3 @@
+#!/bin/bash
+
+lsof -p `ps x | awk '/libflashplayer.so\ /{print $1}'` -n 2>/dev/null | perl -lne '@F = split(/ +/, $_, 9); print "/proc/$F[1]/fd/${\($F[3] =~ /(^\d+)/)[0]}" if $F[4] eq "REG" && $F[8] =~ /\(deleted\)$/'

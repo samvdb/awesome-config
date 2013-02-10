@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ncmpcpp stop
+sudo rc.d stop mpd

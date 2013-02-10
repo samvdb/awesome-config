@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "mypacman.text = `yaourt -Qu | wc -l`" | awesome-client

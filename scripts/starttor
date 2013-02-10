@@ -1,0 +1,7 @@
+#!/bin/bash
+
+systemctl stop pdnsd
+systemctl stop polipo
+systemctl start pdnsd-tor
+systemctl start polipo-tor
+systemctl start tor

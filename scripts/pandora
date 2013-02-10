@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo sh ./.scripts/starttor
+
+if [ $(pidof pianobar) ]; then
+    tmux attach -t Pandora
+else
+    tmux new -s Pandora pianobar
+fi
+
+sudo sh ./.scripts/stoptor

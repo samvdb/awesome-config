@@ -1,0 +1,3 @@
+#!/bin/bash
+# saveip
+wget http://automation.whatismyip.com/n09230945.asp  -O /media/Data/Dropbox/Computer/ip.txt -o /dev/null

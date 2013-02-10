@@ -1,0 +1,7 @@
+#!/bin/bash 
+( sleep 1 && conky -c .conkyrc ) &
+#( sleep 1 && conky -c .conkycalendar ) &
+#( sleep 1 && conky -c .conkyweather ) &
+#( sleep 2 && conky -c .conkyrc6 ) &
+#( sleep 25 && conky -c .conkyrc3 ) &
+#( sleep 5 && conky -c .conkyrc5 ) &

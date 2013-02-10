@@ -1,0 +1,4 @@
+#!/bin/bash
+
+video_url='youtube-dl -g $1'
+mplayer -vc ffflv -ac mp3 -cache 300 -prefer-ipv4 $video_url > /dev/null 2>&1

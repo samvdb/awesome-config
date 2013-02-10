@@ -1,0 +1,4 @@
+#!/bin/bash
+
+slimlock &
+conky -c ~/.conkyrcslim

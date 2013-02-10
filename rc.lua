@@ -65,6 +65,7 @@ end
 
 home = os.getenv("HOME")
 confdir = home .. "/.config/awesome"
+scripts = confdir .. "/scripts"
 themes = confdir .. "/themes"
 
 -- Choose Your Theme
@@ -148,6 +149,12 @@ dofile(confdir .. "/includes/" .. "clock.lua")
 dofile(confdir .. "/includes/" .. "cpu.lua")
 dofile(confdir .. "/includes/" .. "ram.lua")
 dofile(confdir .. "/includes/" .. "disk.lua")
+dofile(confdir .. "/includes/" .. "volume.lua")
+dofile(confdir .. "/includes/" .. "temp.lua")
+dofile(confdir .. "/includes/" .. "uptime.lua")
+dofile(confdir .. "/includes/" .. "mpd.lua")
+dofile(confdir .. "/includes/" .. "kernel.lua")
+
 
 
 
@@ -247,6 +254,40 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
 
+    right_layout:add(netdownicon)
+    right_layout:add(wifidowninfo)
+    right_layout:add(space)
+    right_layout:add(netupicon)
+    right_layout:add(wifiupinfo)
+    right_layout:add(space)
+    right_layout:add(space)
+    right_layout:add(memicon)
+    right_layout:add(memwidget)
+    right_layout:add(space)
+    right_layout:add(space)
+    right_layout:add(cpuicon)
+    right_layout:add(cpuwidget)
+    right_layout:add(space)
+    right_layout:add(space)
+    right_layout:add(volicon)
+    right_layout:add(volumewidget)
+    right_layout:add(space)
+    right_layout:add(space)
+    right_layout:add(tempicon)
+    right_layout:add(tempwidget)
+    right_layout:add(space)
+    right_layout:add(space)
+    right_layout:add(uptimeicon)
+    right_layout:add(uptimewidget)
+    right_layout:add(space)
+    right_layout:add(fsicon)
+    right_layout:add(fswidget)
+    right_layout:add(space)
+    right_layout:add(space)
+    right_layout:add(sysicon)
+    right_layout:add(syswidget)
+    right_layout:add(space)
+    right_layout:add(space)
     right_layout:add(baticon)
     right_layout:add(batwidget)
     right_layout:add(space)

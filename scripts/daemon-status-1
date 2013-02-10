@@ -1,0 +1,31 @@
+#!/bin/bash
+# daemon status
+
+ function chk_status(){
+  target=$1
+  if [ $target != "functions" ] && [ $target !=  "functions.d" ]
+  then
+    if [ -f "/var/run/daemons/$target" ]
+     then
+       stat="[RUNNING]"
+     else
+       stat="[STOPPED]"
+     fi
+
+    printf "$stat \t$target\n"
+  fi
+ }
+
+ daemons=$(ls /etc/rc.d/)
+
+ if [[ $1 != "" ]]
+  then
+   chk_status $1
+ else
+   for d in $daemons
+    do
+     chk_status $d
+   done | sort
+ fi
+
+ exit 0

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+scrot -cd 7 '%d-%m-%Y_%H:%M:%S_scrot.png' -e 'mv $f /media/Data/Dropbox/Photos/Screenshots'

@@ -1,0 +1,6 @@
+#!/bin/bash
+cd /media/Data/Dropbox/Linux/ArchLinux-Config/
+( sleep 0.5 && touch boot etc home opt README tmp usr var ) &&
+( sleep 0.5 && git add boot etc home opt README tmp usr var ) &&
+( sleep 1 && git commit -m "Updated" ) &&
+( sleep 5 && git push origin master )

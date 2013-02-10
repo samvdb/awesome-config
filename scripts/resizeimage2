@@ -1,0 +1,137 @@
+#!/bin/bash
+#
+# resize_img.sh  --  An Imagemagick Resize Script
+#
+#
+# Author: canci <cancivolonter@gmail.com>
+# License: GPL. See http://www.gnu.org/licenses/gpl.html
+#
+# Dependencies: Bash (duh!), Imagemagick, zenity
+#
+#
+
+
+# 1. IFS and other delcarations
+#
+
+# Saving the old one
+#
+SAVEIFS=$IFS
+
+# Declaring the new one
+#
+IFS=$(echo -en "\n\b")
+
+# Files
+#
+FILES=`ls -1 $@`
+
+# Directory name in case files are not being overwritten
+#
+NEW_DIR=RESIZED__`date +%d-%b-%Y_%T`
+
+# Integer file count for the progress bar
+#
+n=1
+
+
+
+# 2. Get desired resolution; Exit if cancel button pressed, otherwise move on
+#
+RES=
+   if [ $? == 1 ]; then
+
+      exit
+      
+   else
+
+# 2.1. Should the resize disregard the current aspect ratio and resize strictly to the given resolution?
+#
+      Q1=
+         if [ $? == 0 ]; then
+
+# 2.1.1. Should the file be overridden or should a new one be created? mogrify or convert will be used accordingly.
+#
+            Q2=
+
+               if [ $? == 0 ]; then
+
+                    for f in $FILES
+                    do
+
+                     mogrify -resize `echo $RES`! $f
+                     echo $n
+                     echo "# Processing file: $f"
+                     let "n = n+1"
+                     
+                    done
+
+               else
+         
+                    mkdir $NEW_DIR
+                    for f in $FILES
+                    do
+
+                     convert -resize `echo $RES`! $f $NEW_DIR/$f
+                     echo $n
+                     echo "# Processing file: $f"
+                     let "n = n+1"
+                     
+                    done
+
+               fi
+      
+      
+# WHAT ELSE? HUH?      
+
+         else
+
+
+
+# 2.1.2. Same as in 2.1.1., but for aspect ratio resize.
+#
+            Q3=
+
+
+               if [ $? == 0 ]; then
+
+                    for f in $FILES
+                    do
+            
+                     mogrify -resize $RES $f
+                     echo $n
+                     echo "# Processing file: $f"
+                     let "n = n+1"
+
+                    done
+
+               else
+
+                    mkdir $NEW_DIR
+                    for f in $FILES
+                    do         
+
+                     convert -resize $RES $f $NEW_DIR/$f
+                     echo $n
+                     echo "# Processing file: $f"
+                     let "n = n+1"
+                     
+                    done
+            
+               fi
+      
+# Ending 2.1.
+         fi
+
+
+# Ending 2
+   fi
+   
+   
+# 3. Restore IFS (for possible future use)
+#
+
+IFS=$SAVEIFS
+
+# EOF
+exit 0

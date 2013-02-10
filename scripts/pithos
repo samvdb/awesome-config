@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo sh ./.scripts/starttor
+pithos
+sudo sh ./.scripts/stoptor

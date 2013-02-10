@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ROUTERIP="192.168.1.1"
+COOKIE=$(/bin/date +/tmp/%H%M%S.txt)
+
+/usr/bin/curl --cookie $COOKIE --data active_page=9117 --data page_title=Stato+Modem --data 'mimic_button_field=submit_button_disattiva%3A+nat..' --data strip_page_top=0 http://$ROUTERIP/admin.cgi
+/usr/bin/curl --cookie $COOKIE http://$ROUTERIP'/admin.cgi?active%5fpage=9117&req%5fmode=1&mimic%5fbutton%5ffield=submit%5fbutton%5fdisattiva%3a+nat%2e%2e&strip%5fpage%5ftop=0&button%5fvalue=nat'
+/usr/bin/curl --cookie $COOKIE --data active_page=9117 --data page_title=Stato+Modem --data 'mimic_button_field=submit_button_attiva%3A+nat..' --data button_value=nat --data strip_page_top=0 http://$ROUTERIP/admin.cgi
+/usr/bin/curl --cookie $COOKIE http://$ROUTERIP'/admin.cgi?active%5fpage=9117&req%5fmode=1&mimic%5fbutton%5ffield=submit%5fbutton%5fattiva%3a+nat%2e%2e&strip%5fpage%5ftop=0&button%5fvalue=nat'
+/usr/bin/curl --cookie $COOKIE http://$ROUTERIP'/admin.cgi?active%5fpage=9117&req%5fmode=1&mimic%5fbutton%5ffield=submit%5fbutton%5fattiva%3a+nat%2e%2e&strip%5fpage%5ftop=0&button%5fvalue=nat'

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo rc.d start mpd
+ncmpcpp play

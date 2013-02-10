@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo systemctl stop polipo
+sudo systemctl stop pdnsd
+#sudo systemctl stop psd
+sudo netcfg -a
+sudo killall dhclient

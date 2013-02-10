@@ -1,0 +1,10 @@
+#!/bin/bash
+
+killall /usr/bin/kactivitymanagerd
+killall upowerd
+killall udisks-daemon
+killall udisksd
+killall console-kit-daemon
+killall kdeinit4
+killall kglobalaccel
+killall kded4

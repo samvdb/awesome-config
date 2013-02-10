@@ -1,0 +1,132 @@
+#!/bin/bash
+
+########################################################
+# cli_radio                                            #
+# based on IceFox radio-select script                  #
+# <http://www.linuxtrack.com/t1214-radioselect-sh.htm> #
+########################################################
+
+# set colors
+RED='\e[1;31m'
+BLUE='\e[1;34m'
+CYAN='\e[36m'
+NC='\e[0m'
+
+# set player
+PLAYER="/usr/bin/mplayer"
+
+# verify if $PLAYER is installed
+if [ -e $PLAYER ]; then
+    # stop current $PLAYER session
+    if [ "$(pidof mplayer)" ]; then
+        killall mplayer
+    fi
+    while true; do
+    clear
+    echo ""
+    echo " ·····················································                                "
+    echo " ·                Select a Station and Play             ·                             "
+    echo " ·                                                   ·                                "
+    echo " ·                                                   ·                                "
+    echo -e " ·     $RED[space]$NC to Pause, $RED[q]$NC to Stop, $RED[Ctrl]+[c]$NC to Quit · "
+    echo " ·····················································                                "
+    echo " ·····················································                                "
+    echo -e " ·  $BLUE  1 $NC  Ciccio Riccio            $BLUE  2 $NC  RTL 102.5 Groove          "
+    echo -e " ·  $BLUE  3 $NC  RTL 102.5                $BLUE  4 $NC  RTL 102.5 Cool        ·   "
+    echo -e " ·  $BLUE  5 $NC  Virgin Radio Hard Rock   $BLUE  6 $NC  Virgin Radio Italia       "
+    echo -e " ·  $BLUE  7 $NC  Virgin Rock 70           $BLUE  8 $NC  Virgin Rock 80            "
+    echo -e " ·  $BLUE  9 $NC  Virgin Rock Alternative  $BLUE 10 $NC  Virgin Rock Classic       "
+    echo -e " ·  $BLUE 11 $NC  Radio 105 FM             $BLUE 12 $NC  Radio Italia Anni 60    · "
+    echo -e " ·  $BLUE 13 $NC  VUOTO                    $BLUE 14 $NC  RAI Radio 1     ·         "
+    echo -e " ·  $BLUE 15 $NC  RAI Radio 3              $BLUE 16 $NC  RMC 60                ·   "
+    echo -e " ·  $BLUE 17 $NC  RMC 80                   $BLUE 18 $NC  RMC 90         ·          "
+    echo -e " ·  $BLUE 19 $NC  RTL 102.5 Classics       $BLUE 20 $NC  R101 80s               ·  "
+    echo -e " ·  $BLUE 21 $NC  R101 90s                 $BLUE 22 $NC  Custom link ...    ·      "
+    echo " ·····················································                                "
+    echo "                                                                                      "
+    echo -e "       Select a $RED number $NC from 1 to 22 , then hit $BLUE[Enter]$NC           "
+    echo ""
+    read choix
+    case $choix in
+        1)
+            $PLAYER http://78.159.121.98:8096/
+            ;;
+        2)
+            $PLAYER http://shoutcast.rtl.it:3040/stream/1/
+            ;;
+        3)
+            $PLAYER http://shoutcast.rtl.it:3010/stream/1/
+            ;;
+        4)
+            $PLAYER http://shoutcast.rtl.it:3070/stream/1/
+            ;;
+        5)
+            $PLAYER http://shoutcast.unitedradio.it:1309/
+            ;;
+        6)
+            $PLAYER http://shoutcast.unitedradio.it:1301/
+            ;;
+        7)
+            $PLAYER http://shoutcast.unitedradio.it:1119/
+            ;;
+        8)
+            $PLAYER http://shoutcast.unitedradio.it:1411/
+            ;;
+        9)
+            $PLAYER http://shoutcast.unitedradio.it:1513/
+            ;;
+        10)
+            $PLAYER http://shoutcast.unitedradio.it:1307/
+            ;;
+        11)
+            $PLAYER http://str30.creacast.com/r101_thema4
+            ;;
+        12)
+            $PLAYER http://78.129.231.143:7140/
+            ;;
+        14)
+            $PLAYER http://212.162.68.230:80/1.mp3
+            ;;
+        15)
+            $PLAYER http://212.162.68.230:80/3.mp3
+            ;;
+        16)
+            $PLAYER http://shoutcast.unitedradio.it:1317/
+            ;;
+        17)
+            $PLAYER http://shoutcast.unitedradio.it:1401/
+            ;;
+        18)
+            $PLAYER http://shoutcast.unitedradio.it:1403/
+            ;;
+        19)
+            $PLAYER http://shoutcast.rtl.it:3020/stream/1/
+            ;;
+        20)
+            $PLAYER http://str30.creacast.com/r101_thema1
+            ;;
+        21)
+            $PLAYER http://str30.creacast.com/r101_thema2
+            ;;
+        22)
+            echo ""
+            echo "Put your custom link here :"
+            echo ""
+            read customlink
+            $PLAYER $customlink
+            ;;
+        *)
+            echo -e "$RED Wrong choice $NC"
+            echo "Try again ..."
+            echo ""
+            sleep 2
+            clear
+            ;;
+    esac
+    done
+else
+    echo " This script need mplayer "
+    echo " Install it or change the PLAYER "
+    echo " exiting ... "
+    exit 0
+fi

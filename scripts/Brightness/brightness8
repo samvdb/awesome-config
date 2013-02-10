@@ -1,0 +1,3 @@
+#!/bin/sh
+
+for i in /sys/class/backlight/acpi_video*/brightness; do echo 8 > $i; done

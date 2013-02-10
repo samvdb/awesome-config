@@ -1,0 +1,20 @@
+#!/bin/bash
+## nowvideo downloader
+## copyleft 2012 gajm
+
+if [ $# -gt 1 ]; then
+    echo "ERROR - Too many arguments..."
+elif [ X$(echo "$1" | grep nowvideo) != "X" ]; then
+    tmp_file=`mktemp`
+    wget -q "$1" -O "$tmp_file"
+    domain=`grep -m1 -o 'flashvars.domain="[^"]*' "$tmp_file" | cut -d'"' -f2`
+    file=`grep -m1 -o 'flashvars.file="[^"]*' "$tmp_file" | cut -d'"' -f2`
+    filekey=`grep -m1 -o 'flashvars.filekey="[^"]*' "$tmp_file" | cut -d'"' -f2`
+    cid=`grep -m1 -o 'flashvars.cid="[^"]*' "$tmp_file" | cut -d'"' -f2`
+    title=`grep -m1 -o '<h4>[^<]*' "$tmp_file" | cut -d'>' -f2`
+    rm  "$tmp_file"
+    stream=`wget -q "$domain/api/player.api.php?pass=undefined&codes=$cid&key=$filekey&file=$file&user=undefined" -O- | cut -d'=' -f2 | cut -d'&' -f1`
+    wget -c "$stream" -O "$title.flv"
+else
+    echo "Usage: $0 <page_url>"
+fi

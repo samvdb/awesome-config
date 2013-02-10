@@ -1,0 +1,5 @@
+#!/bin/bash
+
+killall motion
+find /home/luca/.motion/files -name '*.jpg' -print0 | xargs -0 /bin/rm -rfv
+sleep 2 && sudo modprobe -r uvcvideo

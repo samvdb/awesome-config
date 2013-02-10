@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd ~/.mozilla/firefox/*.default
+for i in *.sqlite; do sqlite3 $i vacuum; sqlite3 $i reindex; done
+cd ~

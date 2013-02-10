@@ -1,0 +1,97 @@
+#!/bin/sh
+
+# bus
+for i in /sys/bus/*/devices/*/power/control; do echo auto > $i; done
+# usb autosuspend
+for i in /sys/bus/usb/devices/*/power/autosuspend; do echo 10 > $i; done
+for i in /sys/bus/usb/devices/*/power/level; do echo auto > $i; done
+# nmi_watchdog -- DISABLED AT KERNEL
+# echo 0 > /proc/sys/kernel/nmi_watchdog
+# cpu
+for i in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do echo powersave > $i; done
+# aspm
+echo powersave > /sys/module/pcie_aspm/parameters/policy
+# kernel write mode
+echo 5 > /proc/sys/vm/laptop_mode
+echo 90 > /proc/sys/vm/dirty_ratio
+echo 1 > /proc/sys/vm/dirty_background_ratio
+echo 60000 > /proc/sys/vm/dirty_expire_centisecs
+echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
+# disk powersave
+hdparm -S 6 -B 254 -a 2048 /dev/sda &> /dev/null
+for i in /sys/class/scsi_host/host*/link_power_management_policy; do echo min_power > $i; done
+# sound card powersave
+echo 1 > /sys/module/snd_hda_intel/parameters/power_save
+echo Y > /sys/module/snd_hda_intel/parameters/power_save_controller
+# wlan0 powersave
+iwconfig wlan0 power on &> /dev/null
+# screen powersave
+for i in /sys/class/backlight/acpi_video*/brightness; do echo 8 > $i; done
+xset +dpms
+xset dpms 0 0 120
+# radeon powersave
+#echo dynpm > /sys/class/drm/card0/device/power_method
+echo profile > /sys/class/drm/card0/device/power_method
+echo low > /sys/class/drm/card0/device/power_profile
+
+## all PCI devices are 'on' by default, we set power management to 'auto'
+# Runtime PM for PCI Device Intel Corporation Device 151a
+echo auto > /sys/bus/pci/devices/0000:03:00.0/power/control
+# Runtime PM for PCI Device Broadcom Corporation BCM43224 802.11a/b/g/n
+echo auto > /sys/bus/pci/devices/0000:02:00.0/power/control
+# Runtime PM for PCI Device Intel Corporation Device 151a
+#echo auto > /sys/bus/pci/devices/0000:04:04.0/power/control
+# Runtime PM for PCI Device Intel Corporation Device 151a
+#echo auto > /sys/bus/pci/devices/0000:04:03.0/power/control
+# Runtime PM for PCI Device Intel Corporation Device 151a
+echo auto > /sys/bus/pci/devices/0000:04:00.0/power/control
+# Runtime PM for PCI Device Intel Corporation 6 Series/C200 Series Chipset Family 4 port SATA IDE Controller
+echo auto > /sys/bus/pci/devices/0000:00:1f.2/power/control
+# Runtime PM for PCI Device Intel Corporation 6 Series/C200 Series Chipset Family USB Enhanced Host Controller #1
+#echo auto > /sys/bus/pci/devices/0000:00:1d.7/power/control
+# Runtime PM for PCI Device Intel Corporation Device 1c27
+echo auto > /sys/bus/pci/devices/0000:00:1d.0/power/control
+# Runtime PM for PCI Device Intel Corporation Xeon E3-1200/2nd Generation Core Processor Family PCI Express Root Port
+echo auto > /sys/bus/pci/devices/0000:00:01.0/power/control
+
+
+# Runtime PM for PCI Device Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller
+#echo auto > /sys/bus/pci/devices/0000:00:02.0/power/control
+# Runtime PM for PCI Device Intel Corporation 6 Series/C200 Series Chipset Family MEI Controller #1
+echo auto > /sys/bus/pci/devices/0000:00:16.0/power/control
+# Runtime PM for PCI Device Intel Corporation Device 1c2c
+echo auto > /sys/bus/pci/devices/0000:00:1a.0/power/control
+# Runtime PM for PCI Device Intel Corporation 6 Series/C200 Series Chipset Family USB Enhanced Host Controller #2
+#echo auto > /sys/bus/pci/devices/0000:00:1a.7/power/control
+# Runtime PM for PCI Device Intel Corporation 6 Series/C200 Series Chipset Family High Definition Audio Controller
+echo auto > /sys/bus/pci/devices/0000:00:1b.0/power/control
+# Runtime PM for PCI Device Intel Corporation 6 Series/C200 Series Chipset Family PCI Express Root Port 1
+echo auto > /sys/bus/pci/devices/0000:00:1c.0/power/control
+# Runtime PM for PCI Device Intel Corporation 6 Series/C200 Series Chipset Family PCI Express Root Port 2
+echo auto > /sys/bus/pci/devices/0000:00:1c.1/power/control
+# Runtime PM for PCI Device Intel Corporation 2nd Generation Core Processor Family DRAM Controller
+echo auto > /sys/bus/pci/devices/0000:00:00.0/power/control
+
+# Disable bluetooth
+modprobe -r btusb
+modprobe -r bluetooth
+
+# Disable webcam
+modprobe -r uvcvideo
+modprobe -r nouveau
+
+# Disable intel_agp
+modprobe -r intel_agp
+
+# Disable unused modules
+modprobe -r ablk_helper
+modprobe -r joydev
+modprobe -r cpufreq_userspace
+modprobe -r kvm_intel
+modprobe -r sony_laptop
+modprobe -r iTCO_wdt
+modprobe -r sky2
+modprobe -r i2c_i801
+modprobe -r serio_raw
+modprobe -r microcode
+modprobe -r mei
