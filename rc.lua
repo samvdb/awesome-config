@@ -259,7 +259,6 @@ for s = 1, screen.count() do
     right_layout:add(space)
     right_layout:add(neticon)
     right_layout:add(space)
-    right_layout:add(space)
     right_layout:add(memicon)
     right_layout:add(memwidget)
     right_layout:add(space)
