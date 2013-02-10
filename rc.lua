@@ -144,6 +144,7 @@ dofile(confdir .. "/includes/" .. "tags.lua")
 
 -- widgets
 dofile(confdir .. "/includes/" .. "battery.lua")
+dofile(confdir .. "/includes/" .. "clock.lua")
 
 
 
@@ -250,6 +251,8 @@ for s = 1, screen.count() do
     right_layout:add(batwidget)
     right_layout:add(space)
     right_layout:add(space)
+    right_layout:add(mytextclockicon)
+    right_layout:add(mytextclock)
     right_layout:add(space)
 
     -- Now bring it all together (with the tasklist in the middle)
