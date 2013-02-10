@@ -145,6 +145,10 @@ dofile(confdir .. "/includes/" .. "tags.lua")
 -- widgets
 dofile(confdir .. "/includes/" .. "battery.lua")
 dofile(confdir .. "/includes/" .. "clock.lua")
+dofile(confdir .. "/includes/" .. "cpu.lua")
+dofile(confdir .. "/includes/" .. "ram.lua")
+dofile(confdir .. "/includes/" .. "disk.lua")
+
 
 
 
@@ -160,10 +164,6 @@ space = wibox.widget.textbox()
 space:set_text(' ')
 
 -- }}
-
-
--- Create a textclock widget
-mytextclock = awful.widget.textclock()
 
 -- Create a wibox for each screen and add it
 mywibox = {}

@@ -304,17 +304,7 @@ wifidowninfo:connect_signal('mouse::leave', function () naughty.destroy(showip) 
 
 -- }}}
 
--- {{{ Cpu
- 
-cpuicon = wibox.widget.imagebox()
-cpuicon:set_image(beautiful.widget_cpu)
-cpuwidget = wibox.widget.textbox()
-vicious.register( cpuwidget, vicious.widgets.cpu, "<span color=\"#8faf5f\">$1%</span>", 3)
-cpuicon:buttons(awful.util.table.join(
-    awful.button({ }, 1, function () awful.util.spawn("".. terminal.. " -geometry 80x18 -e saidar -c", false) end)
-))
 
--- }}}
 
 -- {{{ Ram
 
