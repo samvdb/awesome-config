@@ -20,6 +20,12 @@ Can be found on Arch's AUR site
 - HDDTemp
 	#pacman -S hddtemp
 
+- XSensors
+	#pacman -S sensors
+
+- Wicd (network manager)
+	#pacman -S wicd wicd-gtk
+
 2) Required Fonts
 -----------------
 

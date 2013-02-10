@@ -1,16 +1,39 @@
 -- {{{ Net
 
-netdownicon = wibox.widget.imagebox()
-netdownicon:set_image(beautiful.widget_netdown)
-netupicon = wibox.widget.imagebox()
-netupicon:set_image(beautiful.widget_netup)
+-- netdownicon = wibox.widget.imagebox()
+-- netdownicon:set_image(beautiful.widget_netdown)
+-- netupicon = wibox.widget.imagebox()
+-- netupicon:set_image(beautiful.widget_netup)
+
+neticon = wibox.widget.imagebox()
+neticon:set_image(beautiful.widget_net_wired)
+
+vicious.register(neticon, vicious.widgets.net, "", 2, "eth0");
+
+neticon:buttons(awful.util.table.join(
+    awful.button({ }, 1, function () awful.util.spawn("wicd-client", false) end)
+))
 
 
-wifidowninfo = wibox.widget.textbox()
-vicious.register(wifidowninfo, vicious.widgets.net, "<span color=\"#ce5666\">${wlan0 down_kb}</span>", 1)
+-- wifiicon = wibox.widget.imagebox()
+-- wifiicon:set_image(beautiful.widget_net_wifi_01)
 
-wifiupinfo = wibox.widget.textbox()
-vicious.register(wifiupinfo, vicious.widgets.net, "<span color=\"#87af5f\">${wlan0 up_kb}</span>", 1)
+-- vicious.register(neticon, vicious.widgets.net, 
+-- 	function (widget, args)
+-- 		if args["{ip}"] != nil then
+
+
+
+		 
+-- 		end
+-- 	end, "eth0")
+
+
+-- wifidowninfo = wibox.widget.textbox()
+-- vicious.register(wifidowninfo, vicious.widgets.net, "<span color=\"#ce5666\">${wlan0 down_kb}</span>", 1)
+
+-- wifiupinfo = wibox.widget.textbox()
+-- vicious.register(wifiupinfo, vicious.widgets.net, "<span color=\"#87af5f\">${wlan0 up_kb}</span>", 1)
 
 local function dispip()
 	local f, infos
@@ -36,7 +59,7 @@ local function dispip()
 		screen	= capi.mouse.screen })
 end
 
-wifidowninfo:connect_signal('mouse::enter', function () dispip(path) end)
-wifidowninfo:connect_signal('mouse::leave', function () naughty.destroy(showip) end)
+neticon:connect_signal('mouse::enter', function () dispip(path) end)
+neticon:connect_signal('mouse::leave', function () naughty.destroy(showip) end)
 
 -- }}}
