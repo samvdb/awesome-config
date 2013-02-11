@@ -158,8 +158,13 @@ dofile(confdir .. "/includes/" .. "kernel.lua")
 
 -- irc
 -- dofile(confdir .. "/includes/" .. "irc.lua")
-
-
+require("widget.irc")
+irc = widget.irc({ }, {
+    text = "<span font_desc='Dejavu Sans 11'>&#x2318;</span>", -- PLACE OF INTEREST SIGN
+})
+irc:set_highlights({ "alterecco", "otherecco" })
+irc:set_clientname("weechat-curses")
+awful.widget.layout.margins[irc.widget] = { left = 1, right = 2, top = 1 }
 
 -- {{ Spacers
 
@@ -251,6 +256,7 @@ for s = 1, screen.count() do
     left_layout:add(space)
     left_layout:add(space)
     left_layout:add(mypromptbox[s])
+    left_layout:add(space)
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
@@ -289,6 +295,9 @@ for s = 1, screen.count() do
     right_layout:add(space)
     right_layout:add(baticon)
     right_layout:add(batwidget)
+    right_layout:add(space)
+    right_layout:add(space)
+    right_layout:add(irc)
     right_layout:add(space)
     right_layout:add(space)
     right_layout:add(mytextclockicon)
