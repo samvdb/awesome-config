@@ -77,7 +77,7 @@ beautiful.init(active_theme .. "/theme.lua")
 
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
