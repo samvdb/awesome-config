@@ -137,7 +137,7 @@ local naughty = require("naughty")
 local beautiful = require("beautiful")
 
 local capi = {
-    widget = widget,
+    widget = wibox.widget,
     client = client,
 }
 
