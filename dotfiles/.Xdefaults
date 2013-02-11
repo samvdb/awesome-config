@@ -42,8 +42,9 @@ URxvt*depth:        32
 URxvt*saveLines:    6000
 URxvt*urlLauncher:    firefox
 
-URxvt*font:        xft:Dejavu Sans Mono:pixelsize=13
-URxvt*fontBold:        xft:Dejavu Sans Mono:bold:pixelsize=13
+URxvt*font: xft:Monospace:pixelsize=18                                                                                                                                                         
+                                                                                                                                                                                               
+URxvt*letterSpace: -1  
 
 !URxvt*color0: #000000
 !URxvt*color1: #A80000

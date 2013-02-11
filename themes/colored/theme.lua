@@ -13,7 +13,7 @@ theme.confdir = os.getenv("HOME") .. "/.config/awesome/themes/colored"
 
 -- {{{ Font
 
-theme.font      = "Termsyn 14"
+theme.font      = "Termsyn 18"
 
 -- }}}
 
