@@ -181,7 +181,7 @@ space:set_text(' ')
 -- }}
 
 -- Create a wibox for each screen and add it
-wibox = {}
+mywibox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -246,7 +246,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    wibox[s] = awful.wibox({ position = "top", screen = s, border_width = 0, height = 20 })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, border_width = 0, height = 20 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -311,7 +311,7 @@ for s = 1, screen.count() do
     layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
-    wibox[s]:set_widget(layout)
+    mywibox[s]:set_widget(layout)
 end
 -- }}}
 
