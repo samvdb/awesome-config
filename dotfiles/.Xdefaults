@@ -13,8 +13,8 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 !True transparency
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+urxvt*transparent: true
+urxvt*shading: 10 
 
 URxvt*loginShell:true
 URxvt*jumpScroll:true
