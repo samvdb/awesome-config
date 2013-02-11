@@ -1,4 +1,4 @@
-URxvt*font: -*-terminus-medium-*-normal--28-*-*-*-*-*-*-*-u
+URxvt*font: -*-terminus-medium-*-normal--16-*-*-*-*-*-*-*-u
 URxvt.xftAntialias: true
 
 URxvt.keysym.C-M-1:command:\033]50;-*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-r\007

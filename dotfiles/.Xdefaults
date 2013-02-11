@@ -1,5 +1,5 @@
-# include "/home/archie/dotfiles/.config/xdefaults/fonts/current"
-# include "/home/archie/dotfiles/.config/xdefaults/colors/current"
+# include "/home/archie/.config/awesome/dotfiles/xdefaults/fonts/terminus16"
+# include "/home/archie/.config/awesome/dotfiles/xdefaults/colors/zenburn"
 !# include "/home/archie/dotfiles/.config/xdefaults/scratch"
 ! include ".config/xdefaults/yeahconsole"
 
