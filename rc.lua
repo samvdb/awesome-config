@@ -157,7 +157,7 @@ dofile(confdir .. "/includes/" .. "uptime.lua")
 dofile(confdir .. "/includes/" .. "kernel.lua")
 
 -- irc
--- dofile(confdir .. "/includes/" .. "irc.lua")
+dofile(confdir .. "/includes/" .. "irc.lua")
 require("widget.irc")
 irc = widget.irc({ }, {
     text = "<span font_desc='Dejavu Sans 11'>&#x2318;</span>", -- PLACE OF INTEREST SIGN
@@ -180,7 +180,7 @@ space:set_text(' ')
 -- }}
 
 -- Create a wibox for each screen and add it
-mywibox = {}
+wibox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -245,7 +245,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, border_width = 0, height = 20 })
+    wibox[s] = awful.wibox({ position = "top", screen = s, border_width = 0, height = 20 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -297,7 +297,7 @@ for s = 1, screen.count() do
     right_layout:add(batwidget)
     right_layout:add(space)
     right_layout:add(space)
-    right_layout:add(irc)
+    right_layout:add(irc.widget)
     right_layout:add(space)
     right_layout:add(space)
     right_layout:add(mytextclockicon)
@@ -310,7 +310,7 @@ for s = 1, screen.count() do
     layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
-    mywibox[s]:set_widget(layout)
+    wibox[s]:set_widget(layout)
 end
 -- }}}
 
