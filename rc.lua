@@ -157,8 +157,9 @@ dofile(confdir .. "/includes/" .. "uptime.lua")
 dofile(confdir .. "/includes/" .. "kernel.lua")
 
 -- irc
-dofile(confdir .. "/includes/" .. "irc.lua")
-require("widget.irc")
+--dofile(confdir .. "/includes/" .. "irc.lua")
+
+require("includes.irc")
 irc = widget.irc({ }, {
     text = "<span font_desc='Dejavu Sans 11'>&#x2318;</span>", -- PLACE OF INTEREST SIGN
 })
