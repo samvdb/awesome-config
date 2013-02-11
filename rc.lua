@@ -30,7 +30,7 @@ function run_once(cmd)
   -- run_once("sudo killall rtkit-daemon")
   -- run_once("sudo killall gconfd-2")
   -- run_once("sudo ./.scripts/connect")
-  run_once("parcellite")
+  -- run_once("parcellite")
   -- run_once("sleep 10 && sudo systemctl start mpd.service")
   run_once("xrdb -merge ~/.Xdefaults")
 
