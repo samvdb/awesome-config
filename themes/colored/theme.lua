@@ -132,13 +132,13 @@ theme.layout_floating   = theme.confdir .. "/layouts/floating.png"
 -- }}}
 
 -- {{ Naughty 
-naughty.config.presets.normal.border_color="#712900"
-naughty.config.default_preset.bg="#262626"
-naughty.config.default_preset.fg="#8A825A"
-naughty.config.default_preset.border_width=2
-naughty.config.default_preset.font="Meslo LG S DZ 13"
-naughty.config.default_preset.screen=1
-naughty.config.default_preset.width = 400
+-- naughty.config.presets.normal.border_color="#712900"
+-- naughty.config.default_preset.bg="#262626"
+-- naughty.config.default_preset.fg="#8A825A"
+-- naughty.config.default_preset.border_width=2
+-- naughty.config.default_preset.font="Meslo LG S DZ 13"
+-- naughty.config.default_preset.screen=1
+-- naughty.config.default_preset.width = 400
 
 
 -- }}
