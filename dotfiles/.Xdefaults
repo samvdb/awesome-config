@@ -1,96 +1,44 @@
-! General
- !urxvt*termName:  rxvt-256color
- urxvt*loginShell:         true
- urxvt*scrollBar:         true
- urxvt*secondaryScroll:    true
- urxvt*saveLines:         65535
- urxvt*cursorBlink:       false
- urxvt*urgentOnBell:       true
- !urxvt*override-redirect:false
- !urxvt*borderLess:       false
- !urxvt*internalBorder:       0
- !urxvt*externalBorder:       0
- 
-! Extensions
-urxvt*perl-lib:        /usr/lib/urxvt/perl/
-urxvt*perl-ext-common: default,matcher,searchable-scrollback,clipboard
-urxvt*urlLauncher:     /usr/bin/google-chrome
-urxvt*matcher.button:  1
-!  - catch ugly URLs
+# include "/home/archie/dotfiles/.config/xdefaults/fonts/current"
+# include "/home/archie/dotfiles/.config/xdefaults/colors/current"
+!# include "/home/archie/dotfiles/.config/xdefaults/scratch"
+! include ".config/xdefaults/yeahconsole"
 
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-URxvt.clipboard.autocopy: true
+URxvt*termName: rxvt
 
-URxvt*geometry:             80x25
-!URxvt*background:           #000000
-!URxvt*foreground:           #ffffff
-URxvt*transparent:        false
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
 
-URxvt*scrollBar_right:    false
-URxvt*scrollBar:    false
-URxvt*borderLess:    false
+!True transparency
+URxvt*depth: 32
 
-URxvt*inheritPixmap:    true
-URxvt*tintColor:    #dfdfdf
-URxvt*depth:        32
-!URxvt*background:    rgba:0000/0000/0000/aaaa
-!URxvt*foreground:    rgba:FFFF/FFFF/FFFF/aaaa
-!URxvt*shading:            40
-!URxvt*fading:            0
-URxvt*saveLines:    6000
-URxvt*urlLauncher:    firefox
+URxvt*loginShell:true
+URxvt*jumpScroll:true
+URxvt*mouseWheelScrollPage:true
+! Fade when unfocused
+URxvt*fading: 10
 
-URxvt*font: xft:Monospace:pixelsize=18                                                                                                                                                         
-                                                                                                                                                                                               
-URxvt*letterSpace: -1  
+URxvt*saveLines:10000
+URxvt*scrollBar:false
+URxvt.scrollTtyOutput:false
+URxvt.scrollWithBuffer:true
+URxvt.scrollTtyKeypress:true
 
-!URxvt*color0: #000000
-!URxvt*color1: #A80000
-!URxvt*color2: #00A800
-!URxvt*color3: #A85400
-!URxvt*color4: #0000A8
-!URxvt*color5: #A800A8
-!URxvt*color6: #00A8A8
-!URxvt*color7: #A8A8A8
-!URxvt*color8: #545054
-!URxvt*color9: #F85450
-!URxvt*color10: #50FC50
-!URxvt*color11: #F2FC50
-!URxvt*color12: #5054F8
-!URxvt*color13: #F854F8
-!URxvt*color14: #50FCF8
-!URxvt*color15: #F8FCF8
+URxvt*cursorColor:#ff9020
 
-URxvt*foreground:White
-URxvt*background:Black
+URxvt*geometry: 70x17
 
-!Colors
-! Black
-*color0:      #5A5A5A
-*color8:      #3e3e3e
-! Red
-*color1:      #FF4747
-*color9:      #FF6767
-! Green
-*color2:      #AFC81C
-*color10:     #bFC81C
-! Yellow
-*color3:      #FDD338
-*color11:     #F4D461
-! Blue
-*color4:      #619AF4
-*color12:     #5496FF
-! Purple
-*color5:      #5F5A90
-*color13:     #826AB1
-! Cyan
-*color6:      #47E0FF
-*color14:     #2ED9FB
-! White
-*color7:      #FFFFFF
-*color15:     #DEDEDE
+!URxvt*highlightColor:           White
+URxvt*pointerColor:  Green
+URxvt*pointerColor2: Black
 
+URxvt.internalBorder: 0
+URxvt.externalBorder: 0
+URxvt*imLocale: en_US.UTF-8
+URxvt*urgentOnBell: true
+URxvt.underlineURLs: true
 
-Xcursor.theme:        Vanilla-DMZ
+URxvt.perl-ext-common:  default,keyboard-select,url-select

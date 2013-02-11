@@ -1,0 +1,13 @@
+# Set prompts
+#PROMPT='%m%# '    # default prompt
+#RPROMPT=' %~'     # prompt for right side of screen
+if [[ `id -u` == 0 ]] ; then
+   # color red
+   PS1="$(print '%{\e[1;31m%}>%{\e[0m%}')"
+else
+   # color green
+   PS1="$(print '%{\e[1;32m%}>%{\e[0m%}')"
+fi
+RPS1="$(print '%{\e[1;34m%}%~%{\e[0m%}')"
+
+SPROMPT="Ошибка! Вы хотели ввести %r вместо %R? ([Y]es/[N]o/[E]dit/[A]bort)" 

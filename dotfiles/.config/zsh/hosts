@@ -1,0 +1,6 @@
+# Hosts to use for completion (see later zstyle)
+hosts=(
+	`hostname`
+	8.8.8.8
+	tut.by
+	)

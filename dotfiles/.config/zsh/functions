@@ -1,0 +1,44 @@
+newname() {
+    name=$1
+    vared -c -p 'rename to: ' name
+    command mv $1 $name
+}
+
+mp32utf() {
+    find -iname '*.mp3' -print0 | xargs -0 mid3iconv -eCP1251 --remove-v1
+}
+
+extract() {
+        if [ -f $1 ] ; then
+           case $1 in
+                *.tar.bz2) tar xvjf $1 ;;
+                *.tar.gz) tar xvzf $1 ;;
+                *.bz2) bunzip2 $1 ;;
+                *.rar) rar x $1 ;;
+                *.gz) gunzip $1 ;;
+                *.tar) tar xvf $1 ;;
+                *.tbz2) tar xvjf $1 ;;
+                *.tgz) tar xvzf $1 ;;
+                *.zip) unzip $1 ;;
+                *.Z) uncompress $1 ;;
+                *.7z) 7z x $1 ;;
+                *) echo "don't know how to extract '$1′…" ;;
+            esac
+        else
+                echo "'$1′ is not a valid file!"
+        fi
+}
+
+
+# from muhas
+# to create iso image from console
+#mkiso() {
+      #echo " * Volume name "
+      #read volume
+      #echo " * ISO Name (ie. tmp.iso)"
+      #read iso
+      #echo " * Directory or File"
+      #read files
+      #mkisofs -o ~/$iso -A $volume -allow-multidot -J -R -iso-level 3 -V $volume -R $files
+#}
+

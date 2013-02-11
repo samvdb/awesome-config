@@ -1,0 +1,65 @@
+! YeahConsole for mcabber
+yeahconsole*consoleHeight: 47
+yeahconsole*screenWidth: 1620
+yeahconsole*xOffset: 30
+yeahconsole*handleWidth: 0
+yeahconsole*term:urxvtc -T mcabber -name mcabber
+yeahconsole*toggleKey: Win+grave
+yeahconsole*keyFull: Alt+F11
+!yeahconsole*aniDelay: 30
+yeahconsole*keyBigger: Control+Next
+yeahconsole*keySmaller: Control+Prior
+yeahconsole*stepSize: 50
+yeahconsole*restart:0
+yeahconsole*metaSendsEscape:true
+! for Juick plugin
+yeahconsole.perl-ext: juick
+yeahconsole.perl-lib: ~/.urxvt/
+yeahconsole*juickLauncher: juickopen
+!yeahconsole.keysym.C-o: perl:juick:activate_tag_mode
+yeahconsole.keysym.C-v: perl:juick:activate_nick_mode
+yeahconsole.keysym.M-i: perl:juick:activate_post_mode
+
+! YeahConsole 0
+yeahconsole0*consoleHeight: 46
+yeahconsole0*screenWidth: 840
+yeahconsole0*xOffset: 0
+yeahconsole0*handleWidth: 0
+yeahconsole0*term:urxvtc
+yeahconsole0*toggleKey: Win+F1
+yeahconsole0*keyFull: None+None
+yeahconsole0*keyBigger: None+None
+yeahconsole0*keySmaller: None+None
+yeahconsole0*stepSize: 50
+!yeahconsole0*restart:1
+yeahconsole0*metaSendsEscape:true
+!Fake transparency
+yeahconsole0*tintColor:blue
+yeahconsole0*inheritPixmap: true
+yeahconsole0*shading: 25
+yeahconsole0*transparent: true
+yeahconsole0.tint: true
+yeahconsole0*background:[82]black
+
+
+! YeahConsole 1
+yeahconsole1*consoleHeight: 47
+yeahconsole1*screenWidth: 840
+yeahconsole1*xOffset: 840
+yeahconsole1*handleWidth: 0
+yeahconsole1*term: urxvt
+yeahconsole1*toggleKey: Win+F2
+yeahconsole1*keyFull: None+None
+yeahconsole1*keyBigger: None+None
+yeahconsole1*keySmaller: None+None
+yeahconsole1*stepSize: 50
+!yeahconsole1*restart:1
+yeahconsole1*metaSendsEscape:true
+!Fake transparency
+yeahconsole1*tintColor:green
+yeahconsole1*inheritPixmap: true
+yeahconsole1*shading: 25
+yeahconsole1*transparent: true
+yeahconsole1.tint: true
+
+! vim:ft=xdefaults:

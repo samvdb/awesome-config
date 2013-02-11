@@ -1,0 +1,12 @@
+urxvt.font: xft:Tamsyn:style=Regular:size=18
+urxvt.boldFont: xft:Tamsyn:style=Bold:size=18
+URxvt.xftAntialias: true
+
+URxvt.keysym.C-M-1:command:\033]50;-*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-r\007
+URxvt.keysym.C-M-2:command:\033]50;-*-Terminus-medium-*-*-*-16-*-*-*-*-*-*-r\007
+URxvt.keysym.C-M-3:command:\033]50;-*-Terminus-medium-*-*-*-20-*-*-*-*-*-*-r\007
+!URxvt.keysym.M-C-3: command:\033[8;25;80t
+!URxvt.keysym.M-C-4: command:\033[8;48;110t
+
+! vim:ft=xdefaults:
+!-misc-termsyn-medium-r-normal--14-101-100-100-c-70-iso8859-2

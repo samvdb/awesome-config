@@ -1,0 +1,13 @@
+! Scratch for mcabber
+scratch*cursorColor:green
+!scratch*background:[90]black
+! for Juick plugin
+!scratch.perl-ext: juick
+!scratch.perl-lib: ~/.urxvt/
+!scratch.urlLauncher: firefox
+!scratch*juickLauncher: juickopen
+!scratch.keysym.C-o: perl:juick:activate_tag_mode
+!scratch.keysym.C-v: perl:juick:activate_nick_mode
+!scratch.keysym.M-i: perl:juick:activate_post_mode
+
+! vim:ft=xdefaults:
