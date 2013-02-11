@@ -27,7 +27,7 @@ vicious.register( batwidget, vicious.widgets.bat,
 			     batwidget.lastwarn = current
 			  end
        	end     
-		return "<span color=\"" .. battery_color .. "\">" .. args[1] .. args[2] .. "% [" .. args[3] .. "]</span>"
+		return "<span color=\"" .. battery_color .. "\">"  .. args[2] .. "% [" .. args[3] .. "]</span>"
 	end, 30, "BAT0")
 
 

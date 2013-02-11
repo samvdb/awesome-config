@@ -156,7 +156,8 @@ dofile(confdir .. "/includes/" .. "uptime.lua")
 dofile(confdir .. "/includes/" .. "mpd.lua")
 dofile(confdir .. "/includes/" .. "kernel.lua")
 
-
+-- irc
+dofile(confdir .. "/includes/" .. "irc.lua")
 
 
 
@@ -255,7 +256,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
 
-
+    right_layout:add(irc)
     right_layout:add(space)
     right_layout:add(neticon)
     right_layout:add(space)
