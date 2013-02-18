@@ -32,6 +32,7 @@ function run_once(cmd)
   -- run_once("sudo ./.scripts/connect")
   -- run_once("parcellite")
   -- run_once("sleep 10 && sudo systemctl start mpd.service")
+  run_once("./scripts/arandr")
   run_once("xrdb -merge ~/.Xdefaults")
 
 -- }}}
@@ -156,6 +157,7 @@ dofile(confdir .. "/includes/" .. "uptime.lua")
 -- dofile(confdir .. "/includes/" .. "mpd.lua")
 dofile(confdir .. "/includes/" .. "kernel.lua")
 
+--dofile(confdir .. "/includes/" .. "autorun.lua")
 -- irc
 --dofile(confdir .. "/includes/" .. "irc.lua")
 

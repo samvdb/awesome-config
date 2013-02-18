@@ -18,6 +18,32 @@ awful.rules.rules = {
                      maximized_horizontal = false,
                      buttons = clientbuttons,
                      size_hints_honor = false } },
+   
+-- {{ Chat 
+
+    { rule = { class = "urxvt_weechat" },
+	properties = { tag = tags[2][4] }},
+
+-- }}
+
+-- {{ Coding
+
+    { rule = { class = "sublime_text" },
+	properties = { tag = tags[2][2] }},
+
+-- }} 
+
+-- {{ Terminals / Git 
+
+    { rule = { class = "urxvt_git_full" },
+	properties = { tag = tags[1][1] }},
+    { rule = { class = "urxvt_git_cercom" },
+	properties = { tag = tags[1][1] }},
+    { rule = { class = "urxvt_log" },
+	properties = { tag = tags[1][1],
+		maximized_horizontal = true } },
+-- }} 	
+
     { rule = { class = "xterm" },
       properties = { floating = true } },
     { rule = { class = "urxvt" },

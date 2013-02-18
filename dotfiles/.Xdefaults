@@ -42,4 +42,9 @@ URxvt*imLocale: en_US.UTF-8
 URxvt*urgentOnBell: true
 URxvt.underlineURLs: true
 
-URxvt.perl-ext-common:  default,keyboard-select,url-select
+URxvt.perl-ext-common:  default,clipboard,keyboard-select,url-select
+URxvt.keysym.M-C-c:   perl:clipboard:copy
+URxvt.keysym.M-C-v:   perl:clipboard:paste
+!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+!if set to true, the clipboard is automatically updated whenever the PRIMARY selection changes
+URxvt.clipboard.autocopy: true
