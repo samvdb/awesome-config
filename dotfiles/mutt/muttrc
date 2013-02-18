@@ -1,0 +1,105 @@
+set charset = UTF8
+
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+set mailcap_path = $HOME/.mutt/mailcap
+
+folder-hook '1' 'source ~/.mutt/accounts/1'
+folder-hook '2' 'source ~/.mutt/accounts/2'
+folder-hook '3' 'source ~/.mutt/accounts/3'
+
+# switch to default account on startup
+source ~/.mutt/accounts/1
+
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/1<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/2<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/accounts/3<enter><change-folder>!<enter>'
+
+
+account-hook 1 'set imap_user=1 imap_pass=1'
+account-hook 2 'set imap_user=2 imap_pass=2'
+account-hook 3 'set imap_user=3 imap_pass=3'
+
+
+bind editor <space> noop
+macro index R "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index S "<change-folder>=[Gmail]/sent<enter>" "Go to Sent Mail"
+
+set move = no  #Stop asking to "move read messages to mbox"!
+set imap_keepalive = 300
+set mail_check = 120
+
+# View
+
+set date_format="%d %b %y ◦ %H:%M"
+set index_format="%Z ◦ %{%d %b %y}, %{%H:%M} │ %-32.32L ◦ (%4c) │ %s"
+
+set nostrict_threads                    # Lets have some fuzzy threading.
+set pager_context=2                     # Paging down a message leaves 5 lines of overlap, so you don't get lost
+set pager_index_lines=8                 # Show 8 messages on either side of the message I'm reading.
+set pager_stop                          # Don't skip msgs on next page.
+set sort=threads                        # Sort by threads
+set sort_aux=date-received              # Sort threads by date received.
+#set tilde
+
+# URL & HTML
+macro index,pager \cb "<enter-command> set my_pdsave=\$pipe_decode<enter>\
+        <enter-command> unset pipe_decode<enter>\
+        <pipe-message>extract_url<enter>\
+        <enter-command> set pipe_decode=\$my_pdsave<enter>" "get URLs"
+
+alternative_order text/enriched text/plain text/html
+auto_view text/html
+
+# Header stuff
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
+
+ignore *
+unignore from: date subject to cc
+unignore x-mailing-list: posted-to:
+unignore x-mailer:
+
+# For better looks
+set markers=no # don't put '+' at the beginning of wrapped lines
+set pager_index_lines= 15 # how large is the index window?
+set sort = 'threads'
+set sort_aux = 'last-date-received'
+
+# My Editor
+set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
+
+set include = yes                               # Include Message In Replies
+set fcc_attach                                  # Forward Attachments
+unset reply_self                                # Don't Include Myself When Replying To A Group
+set attribution="On %d, %n wrote:"
+set forward_format="Fwd: %s"
+set indent_str="> "                             # Indented Text Prefaced By This String.
+
+
+source ~/.mutt/awesome.color   # Colors
+
+# Abook in Mutt
+
+set query_command = "abook --mutt-query '%s'"
+macro index a     "|abook --add-email\n" 'aggiunge mittente ad abook'
+macro pager a     "|abook --add-email\n" 'aggiunge mittente ad abook'
+
+# Sidebar
+
+set sidebar_width=28
+set sidebar_visible=no
+#set sidebar_delim='!'
+set sidebar_delim='│'
+#set sidebar_sort=yes
+#mailboxes =inbox =[GMAIL]/Sent Mail
+bind index CP sidebar-prev
+bind index CN sidebar-next
+bind index CO sidebar-open
+bind pager CP sidebar-prev
+bind pager CN sidebar-next
+bind pager CO sidebar-open
+set imap_check_subscribed

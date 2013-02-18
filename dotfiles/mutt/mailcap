@@ -1,0 +1,11 @@
+application/pdf; llpp %s
+application/vnd.ms-excel; libreoffice %s & sleep 2
+application/msword; libreoffice %s & sleep 2
+image/*; viewnior %s & sleep 2
+#text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; elinks %s; nametemplate=%s.html
+text/html; elinks -dump %s; nametemplate=%s.html; copiousoutput
+text/plain; elinks %s; nametemplate=%s.html
+text/plain; elinks -dump %s; nametemplate=%s.html; copiousoutput
+text/enriched; elinks %s; nametemplate=%s.html
+text/enriched; elinks -dump %s; nametemplate=%s.html; copiousoutput

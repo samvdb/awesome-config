@@ -1,0 +1,11 @@
+set from = "xxx@gmail.com"
+set realname = "Name"
+set hostname = "xxx"
+set imap_user = "xxx@gmail.com"
+set imap_pass = "xxx"
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set record="imaps://imap.gmail.com/[Gmail]/sent"
+set smtp_url = "smtp://xxx@smtp.gmail.com:587/"
+set smtp_pass = "xxx"
+set ssl_force_tls = yes

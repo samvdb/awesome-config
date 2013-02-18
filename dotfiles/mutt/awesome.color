@@ -1,0 +1,34 @@
+# -*-muttrc-*-
+
+# Colors		    fg		        bg
+color hdrdefault	blue		    default
+color signature		magenta		    default
+color attachment	black 	        default
+color message		red	            default
+color error		    red     	    default
+color indicator		yellow    	    default
+color status		blue		    default
+color tree		    red 		    default
+color normal		white		    default
+color markers		red		        default
+color search		white		    default
+color tilde		    blue		    default
+
+color quoted		red		        default
+color quoted1		cyan		    default
+color quoted2		red		        default
+color quoted3		cyan		    default
+color quoted4		red		        default
+color quoted5		cyan		    default
+color quoted6		red		        default
+color quoted7		cyan		    default
+
+color index		    brightmagenta	default	~F
+color index		    magenta		    default	~T
+color index		    brightgreen	    default	"~N|~O"
+color index		    brightred	    default	~D
+
+color body		    green		    default	"(https|http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+color body		    green		    default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+
+color body		    magenta		    default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
